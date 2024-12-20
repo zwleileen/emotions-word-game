@@ -53,10 +53,40 @@ let successfulMatches
 2. Add event listeners
 ```
 startButton -> click
-- replace landing page with game state content
+- replace landing page with gameState
+
+gameState
+- display triesLeft
+- display timeLeft, countdown from 60s
+- display a random category as header
+- displayWords
+
+displayWords 
+- display 12 cards with words in them
+- 3 words must be drawn from the category and are "correct"
+- fill the rest of the cards with randomly drawn words that are "wrong"
 
 selectedWords -> click
-- change color to indicate selection is registered, push to an array to check match
+- word changes color to indicate selection is registered
+- checkSelection
+
+checkSelection
+- check if selected words are "correct", if 3 "correct" words are chosen, store them in resultsMatch, display "correct", start newRound 
+- if not, revert the words to original color and reduce triesLeft by 1, display "wrong"
+
+newRound
+- display a new category randomly
+- displayWords
+
+endGame
+- when timeLeft is 0, replace gameState with results
+
+results
+- if there are successful matches, display the list from resultsMatch
+- if not, display tryAgain message
+- display resetButton
+
+resetButton -> click, display gameState
 
 ```
 3. Invoke the init()
