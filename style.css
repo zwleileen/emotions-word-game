@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    /* note for em later, that browser's default font size is 16px */
+}
+
+.game-container {
+    background-color: white;
+    padding: 2em;
+    border-radius: 2em;
+    height: 20em;
+    width: 25em;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    font-size: 1em;
+}
+
+.target-category {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: #2196F3;
+    text-transform: uppercase;
+}
+
+.word-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1em;
+    margin: 1em 0;
+}
+
+/* Game instructions text */
+.instructions {
+    text-align: center;
+    margin: 1em;
+    color: #666;
+}
+
+.feedback {
+    text-align: center;
+    margin: 1em;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+/* Start button styling */
+.start-button {
+    display: block; /*change back to block later*/
+    justify-content: space-between;
+    align-items: center;
+    width: 5em;
+    margin: 2em;
+    padding: 15px 30px;
+    font-size: 18px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.start-button:hover {
+    background: #1976D2;
+}
+
+/* Initially hide the game content */
+.game-content {
+    display: none;
+}

@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="game-container">
+        <button id="start-button" class="start-button">Start</button>
+
+       <!-- Main game content that is hidden initially -->
+        <div id="game-content" class="game-content">
+            <div class="stats">
+                <div>Tries left: <span id="tries">3</span></div>
+                <div>Time: <span id="timer">60</span>s</div>
+            </div>
+            <div id="category" class="target-category">Scared</div>
+            <div class="instructions">Find 3 words that match this emotion!</div>
+            <div id="word-grid" class="word-grid">Confused</div>
+            <div id="feedback" class="feedback">Correct!</div>
+        </div>
+    </div>
 </body>
 </html>
