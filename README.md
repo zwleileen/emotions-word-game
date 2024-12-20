@@ -15,9 +15,11 @@ This project is about developing a simple game with win or lose feature using Ja
 
 # User story (includes wireframe)
 - As a user, I want to see a landing page with the name of the game so that I know I'm in the right place.
-![alt text](image-url)
 - As a user, I want to see the instructions on how to play the game and the start button so that I know what to expect and how to proceed. 
 - As a user, I want to be able to click the start button and see the initial game state (the category and set of words I can select from) so that I can begin playing the game. 
+
+![Landing page](https://i.imgur.com/XvTuQAg.png)
+
 - As a user, I want to see the timer counting down so that I know the game has started. 
 - As a user, I want to see visual feedback of the word I have selected so that I know my selection has been registered. 
 - As a user, I want to see feedback on whether the match is correct or wrong, so that I know whether to change my selection. 
@@ -25,8 +27,14 @@ This project is about developing a simple game with win or lose feature using Ja
 - As a user, I want to see how many tries I have left so that I know how many more wrong matches I can afford to make to not lose the game. 
 - As a user, I want to see the existing game set replaced by a different category and set of words automatically when my match is correct, so that I know I have moved on to the next set.
 - As a user, I want to see when the time is up so that I know the game has ended.
+
+![Landing page](https://i.imgur.com/iWIWnXz.png)
+
 - As a user, I want to see a summary of my results, including all the correct matches I have made, as well as when there is no match, so that I can reflect on the game I have played. 
 - As a user, I want to see a restart button so that I know I can play again. 
+
+![Landing page](https://i.imgur.com/rTV04K7.png)
+![Landing page](https://i.imgur.com/FjO5C2o.png)
 
 # Pseudocode
 1. Define constants and variables.
