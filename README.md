@@ -22,21 +22,32 @@ This project is about developing a simple game with win or lose feature using Ja
 
 ![Landing page](https://i.imgur.com/XvTuQAg.png)
 
+![Game state](https://i.imgur.com/iWIWnXz.png)
+
 - As a user, I want to see the timer counting down so that I know the game has started. 
 - As a user, I want to see visual feedback of the word I have selected so that I know my selection has been registered. [think about whether to add a submit button]
 - As a user, I want to see feedback on whether the match is correct or wrong, so that I know whether to change my selection. 
+
+![Correct match](https://i.imgur.com/ej7ngOH.png)
+
+- As a user, I want to see the existing game set replaced by a different category and set of words automatically when my match is correct, so that I know I have moved on to the next set.
+
+![New set](https://i.imgur.com/kcQgBAm.png)
+
 - As a user, I want to see that my selection is cleared when the match is wrong, so that I can reselect some of them in my next try. 
 - As a user, I want to see how many tries I have left so that I know how many more wrong matches I can afford to make to not lose the game. 
-- As a user, I want to see the existing game set replaced by a different category and set of words automatically when my match is correct, so that I know I have moved on to the next set.
+
+![Wrong match](https://i.imgur.com/owAgqEB.png)
+
+![Same set](https://i.imgur.com/Cck9fMv.png)
+
 - As a user, I want to see when the time is up so that I know the game has ended.
-
-![Game state](https://i.imgur.com/iWIWnXz.png)
-
 - As a user, I want to see a summary of my results, including all the correct matches I have made, as well as when there is no match, so that I can reflect on the game I have played. [think about what happened if the list gets too long]
 - As a user, I want to see a restart button so that I know I can play again. 
 
 ![Results - with matches](https://i.imgur.com/rTV04K7.png)
-![Results - with no match](https://i.imgur.com/FjO5C2o.png)
+
+![Results - with no match](https://i.imgur.com/rC0b62N.png)
 
 # Pseudocode
 1. Define and initialise game state
