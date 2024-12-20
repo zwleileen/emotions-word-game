@@ -28,21 +28,40 @@ This project is about developing a simple game with win or lose feature using Ja
 - As a user, I want to see the existing game set replaced by a different category and set of words automatically when my match is correct, so that I know I have moved on to the next set.
 - As a user, I want to see when the time is up so that I know the game has ended.
 
-![Landing page](https://i.imgur.com/iWIWnXz.png)
+![Game state](https://i.imgur.com/iWIWnXz.png)
 
 - As a user, I want to see a summary of my results, including all the correct matches I have made, as well as when there is no match, so that I can reflect on the game I have played. 
 - As a user, I want to see a restart button so that I know I can play again. 
 
-![Landing page](https://i.imgur.com/rTV04K7.png)
-![Landing page](https://i.imgur.com/FjO5C2o.png)
+![Results - with matches](https://i.imgur.com/rTV04K7.png)
+![Results - with no match](https://i.imgur.com/FjO5C2o.png)
 
 # Pseudocode
-1. Define constants and variables.
-2. Define the game's state variables but don't assign values to them. 
-3. Select and 
-4. Add event listeners
-5. Invoke the init()
-6. Invoke render()
+1. Define and initialise game state
+``` 
+const categories = {
+    scared: [...],
+    joyful: [...]
+}
+
+let selectedWords
+let currentCategory
+let triesLeft
+let timeLeft
+let successfulMatches
+```
+2. Add event listeners
+```
+startButton -> click
+- replace landing page with game state content
+
+selectedWords -> click
+- change color to indicate selection is registered, push to an array to check match
+
+```
+3. Invoke the init()
+
+4. Invoke render()
 
 # Why this game
 In the book titled "How Emotions are Made: The Secret Life of the Brain" by Dr. Lisa Feldman Barrett, she states the importance of emotional granularity in developing emotional intelligence. Being able to accurately label our emotions and help us to better understand, regulate and communicate them. Studies have shown that people with more vocabulary describing their emotions i.e. emotional granularity are better equipped to handle adversity. This game aims to make it easier for everyone to remember more granular emotions and hopefully use them in our day to day to help us understand our emotions better.
