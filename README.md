@@ -1,10 +1,12 @@
+## [6 Jan should show the game almost done e.g. display 4 cards and could match 3 cards]
+
 # Project: Emotions Word Game
 This project is about developing a simple game with win or lose feature using Javascript. The game chosen is called "Emotions Word Game". 
 
 # Description 
 1. The theme of this game is "emotions" and uses words describing various emotions from The Feeling Wheel developed by Dr. Gloria Willcox. She adapted the wheel from the original version developed by Dr. Robert Plutchik.
 2. Words that describe emotions can vary from broad level e.g. anger, sadness, to very specific ones e.g. disrespected, isolated. 
-3. As such, they could be used in words matching games that involve categories (broad level) and elements belong to the categories (specific level).
+3. As such, they could be used in words matching games that involve categories (broad level) and elements belonging to the categories (specific level).
 
 # How to play 
 1. The player will be shown random words and a category. 
@@ -21,7 +23,7 @@ This project is about developing a simple game with win or lose feature using Ja
 ![Landing page](https://i.imgur.com/XvTuQAg.png)
 
 - As a user, I want to see the timer counting down so that I know the game has started. 
-- As a user, I want to see visual feedback of the word I have selected so that I know my selection has been registered. 
+- As a user, I want to see visual feedback of the word I have selected so that I know my selection has been registered. [think about whether to add a submit button]
 - As a user, I want to see feedback on whether the match is correct or wrong, so that I know whether to change my selection. 
 - As a user, I want to see that my selection is cleared when the match is wrong, so that I can reselect some of them in my next try. 
 - As a user, I want to see how many tries I have left so that I know how many more wrong matches I can afford to make to not lose the game. 
@@ -30,7 +32,7 @@ This project is about developing a simple game with win or lose feature using Ja
 
 ![Game state](https://i.imgur.com/iWIWnXz.png)
 
-- As a user, I want to see a summary of my results, including all the correct matches I have made, as well as when there is no match, so that I can reflect on the game I have played. 
+- As a user, I want to see a summary of my results, including all the correct matches I have made, as well as when there is no match, so that I can reflect on the game I have played. [think about what happened if the list gets too long]
 - As a user, I want to see a restart button so that I know I can play again. 
 
 ![Results - with matches](https://i.imgur.com/rTV04K7.png)
@@ -94,7 +96,7 @@ resetButton -> click, display gameState
 4. Invoke render()
 
 # Why this game
-In the book titled "How Emotions are Made: The Secret Life of the Brain" by Dr. Lisa Feldman Barrett, she states the importance of emotional granularity in developing emotional intelligence. Being able to accurately label our emotions and help us to better understand, regulate and communicate them. Studies have shown that people with more vocabulary describing their emotions i.e. emotional granularity are better equipped to handle adversity. This game aims to make it easier for everyone to remember more granular emotions and hopefully use them in our day to day to help us understand our emotions better.
+In the book titled "How Emotions are Made: The Secret Life of the Brain" by Dr. Lisa Feldman Barrett, she shared about the importance of emotional granularity in developing emotional intelligence. Being able to accurately label our emotions can help us to better understand, regulate and communicate them. Studies have shown that people with more vocabulary describing their emotions i.e. emotional granularity are better equipped to handle adversity. This game aims to make it easier for everyone to remember more granular emotions and hopefully use them in our day to day.
 
 
 
