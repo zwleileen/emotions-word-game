@@ -14,7 +14,7 @@ body {
     padding: 2em;
     border-radius: 2em;
     height: 20em;
-    width: 25em;
+    width: 30em;
 }
 
 .stats {
@@ -55,12 +55,9 @@ body {
 
 /* Start button styling */
 .start-button {
-    display: block; /*change back to block later*/
-    justify-content: space-between;
-    align-items: center;
-    width: 5em;
-    margin: 2em;
-    padding: 15px 30px;
+    display: none; 
+    margin: 13em auto; /*use auto for left/right centering*/
+    padding: 1em 2em;
     font-size: 18px;
     background: #2196F3;
     color: white;
@@ -73,6 +70,6 @@ body {
 }
 
 /* Initially hide the game content */
-.game-content {
+/* .game-content {
     display: none;
-}
+} */
