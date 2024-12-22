@@ -55,7 +55,7 @@ body {
 
 /* Start button styling */
 .start-button {
-    display: none; 
+    display: block; 
     margin: 13em auto; /*use auto for left/right centering*/
     padding: 1em 2em;
     font-size: 18px;
