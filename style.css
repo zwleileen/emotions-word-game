@@ -69,7 +69,6 @@ body {
     background: #1976D2;
 }
 
-/* Initially hide the game content */
-/* .game-content {
+.game-content {
     display: none;
-} */
+}
