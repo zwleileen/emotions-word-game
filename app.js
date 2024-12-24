@@ -43,18 +43,38 @@ function setupRound() {
   let words = [...categories[currentCategory]];
 
   const grid = document.getElementById("word-grid");
-  grid.innnerHTML = "";
+  grid.innerHTML = "";
   words.forEach((word) => {
     const button = document.createElement("button");
     button.className = "word-button";
     button.textContent = word;
-    button.addEventListener("click", () => {
-      return selectWord(button, word);
-      grid.appendChild(button);
-    });
+    button.addEventListener("click", () => selectWord(button, word)); //cannot insert return here because the function would exit before appendChild
+    grid.appendChild(button);
   });
   selectedWords = [];
   document.getElementById("feedback").textContent = "";
+}
+
+function selectWord(button, word) {
+  if (timeLeft <= 0) return;
+  if (button.classList.contains("selected")) {
+    //if button is already selected, click would deselect it
+    button.classList.remove("selected");
+    selectedWords = selectedWords.filter((w) => w !== word);
+  } else if (selectedWords.length < 3) {
+    button.classList.add("selected");
+    selectedWords.push(word);
+    if (selectedWords.length === 3) {
+      //if is inside the elseif because this check needs to happen immediately after adding a word
+      checkSelection();
+    }
+  }
+}
+
+function checkSelection() {
+  const correct = selectedWords.every((word) =>
+    categories[currentCategory].includes(word)
+  );
 }
 
 function startNewGame() {

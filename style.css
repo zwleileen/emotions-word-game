@@ -39,6 +39,21 @@ body {
     margin: 1em 0;
 }
 
+/* Word button created from js that adds to every word-grid */
+.word-button {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+    font-size: 16px; 
+}
+
+.word-button.selected {
+    background: #e0e0e0;
+    border-color: #2196F3;
+}
+
 /* Game instructions text */
 .instructions {
     text-align: center;
