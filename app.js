@@ -66,10 +66,12 @@ function setupRound(resetTries = false) {
   const grid = document.getElementById("word-grid");
   grid.innerHTML = "";
   words.forEach((word) => {
+    //add a CSS class word-button to style it
     const button = document.createElement("button");
     button.className = "word-button";
     button.textContent = word;
     button.addEventListener("click", () => selectWord(button, word)); //cannot insert return here because the function would exit before appendChild
+    //add the button to the grid
     grid.appendChild(button);
   });
   selectedWords = [];
@@ -117,6 +119,7 @@ function checkSelection() {
     //immediately check if triesLeft is 0 then start new round
     if (triesLeft <= 0) {
       setupRound(true);
+      showFinalResults();
     }
     //sets 1s delay after incorrect match to deselect all buttons
     else {
@@ -128,6 +131,36 @@ function checkSelection() {
       }, 1000);
     }
   }
+}
+
+function showFinalResults() {
+  const grid = document.getElementById("word-grid");
+  grid.innerHTML = '<div class = "summary">';
+
+  if (Object.keys(successfulMatches).length === 0) {
+    grid.innerHTML += "<h3>No successful match</h3>";
+  } else {
+    grid.innerHTML += "<h3>Successful Matches:</h3>";
+    Object.entries(successfulMatches).forEach(([category, words]) => {
+      grid.innerHTML += `
+        <div class="summary-category">
+            <strong>${category}:</strong> ${words.join(", ")}  
+        </div>`; //join() converts arry to string with comma+space between words
+    });
+  }
+  // Add play again button
+  grid.innerHTML += `
+    <button onclick="showStartButton()" style="padding: 10px 20px; margin-top: 20px;">
+        Play Again
+    </button>
+</div>`;
+}
+
+// Reset game to start screen
+function showStartButton() {
+  document.getElementById("game-content").style.display = "none";
+  document.getElementById("start-button").style.display = "block";
+  successfulMatches = {}; // Reset score
 }
 
 function startNewGame() {
