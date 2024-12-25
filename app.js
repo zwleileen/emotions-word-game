@@ -22,7 +22,7 @@ let currentCategory = "";
 let triesLeft = 3;
 let timeLeft = 60;
 let timer;
-let succesfulMatches = {};
+let successfulMatches = {};
 
 // Hide start button and initiate new game
 document.getElementById("start-button").addEventListener("click", function () {
@@ -30,6 +30,15 @@ document.getElementById("start-button").addEventListener("click", function () {
   document.getElementById("game-content").style.display = "block";
   startNewGame();
 });
+
+// Randomly shuffle an array (Fisher-Yates algorithm)
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
 function setupRound() {
   triesLeft = 3;
@@ -40,7 +49,17 @@ function setupRound() {
     categoryNames[Math.floor(Math.random() * categoryNames.length)];
   document.getElementById("category").textContent = currentCategory;
 
-  let words = [...categories[currentCategory]];
+  // Get randomly 3 words belonging to the category
+  let words = shuffle([...categories[currentCategory]]).slice(0, 3);
+
+  // Get up to 9 random words from other categories
+  const otherWords = shuffle(
+    Object.entries(categories) //creates entries of [key,value] pair, in this case ['scared',['confused','rejected']]
+      .filter((category) => category[0] !== currentCategory) //filter goes through every category and filters out category[0] that is currentCategory
+      .flatMap(([, words]) => words) //ignores the key in the [key,value] and just takes the value
+  ).slice(0, 9); //takes 9 words or less after shuffling
+
+  words = shuffle([...words, ...otherWords]);
 
   const grid = document.getElementById("word-grid");
   grid.innerHTML = "";
@@ -57,15 +76,17 @@ function setupRound() {
 
 function selectWord(button, word) {
   if (timeLeft <= 0) return;
+  // if button is already selected, deselect it
   if (button.classList.contains("selected")) {
-    //if button is already selected, click would deselect it
     button.classList.remove("selected");
     selectedWords = selectedWords.filter((w) => w !== word);
-  } else if (selectedWords.length < 3) {
+  }
+  // if button is not selected and selectedWords < 3, then select it
+  else if (selectedWords.length < 3) {
     button.classList.add("selected");
     selectedWords.push(word);
+    // then immediately check if there are already 3 selected words
     if (selectedWords.length === 3) {
-      //if is inside the elseif because this check needs to happen immediately after adding a word
       checkSelection();
     }
   }
@@ -75,6 +96,22 @@ function checkSelection() {
   const correct = selectedWords.every((word) =>
     categories[currentCategory].includes(word)
   );
+
+  const feedback = document.getElementById("feedback");
+  if (correct) {
+    successfulMatches[currentCategory] = selectedWords; // don't use .push() because successfulMatches is an object, not an array
+    feedback.textContent = "Correct!";
+  }
+  // handle incorrect match
+  else {
+    triesLeft--;
+    document.getElementById("tries").textContent = triesLeft;
+    feedback.textContent = "Wrong!";
+    //immediately check if triesLeft is 0 then start new round
+    if (triesLeft <= 0) {
+      setupRound();
+    }
+  }
 }
 
 function startNewGame() {
