@@ -40,9 +40,11 @@ function shuffle(array) {
   return array;
 }
 
-function setupRound() {
-  triesLeft = 3;
-  document.getElementById("tries").textContent = triesLeft;
+function setupRound(resetTries = false) {
+  if (resetTries) {
+    triesLeft = 3;
+    document.getElementById("tries").textContent = triesLeft;
+  }
 
   const categoryNames = Object.keys(categories);
   currentCategory =
@@ -101,6 +103,11 @@ function checkSelection() {
   if (correct) {
     successfulMatches[currentCategory] = selectedWords; // don't use .push() because successfulMatches is an object, not an array
     feedback.textContent = "Correct!";
+
+    // sets 1.5s delay after correct match to reset the round
+    setTimeout(() => {
+      setupRound(false);
+    }, 1500);
   }
   // handle incorrect match
   else {
@@ -109,11 +116,20 @@ function checkSelection() {
     feedback.textContent = "Wrong!";
     //immediately check if triesLeft is 0 then start new round
     if (triesLeft <= 0) {
-      setupRound();
+      setupRound(true);
+    }
+    //sets 1s delay after incorrect match to deselect all buttons
+    else {
+      setTimeout(() => {
+        feedback.textContent = "";
+        const buttons = document.querySelectorAll(".word-button");
+        buttons.forEach((button) => button.classList.remove("selected"));
+        selectedWords = [];
+      }, 1000);
     }
   }
 }
 
 function startNewGame() {
-  setupRound();
+  setupRound(true);
 }
