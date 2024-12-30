@@ -1,5 +1,5 @@
 const categories = {
-  scared: [
+  Scared: [
     "confused",
     "rejected",
     "helpless",
@@ -7,7 +7,7 @@ const categories = {
     "insecure",
     "anxious",
   ],
-  joyful: [
+  Joyful: [
     "excited",
     "sensuous",
     "energetic",
