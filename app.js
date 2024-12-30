@@ -136,25 +136,31 @@ function checkSelection() {
 //replaces word-grid with a summary grid
 function showFinalResults() {
   const grid = document.getElementById("word-grid");
-  grid.innerHTML = '<div class = "summary">';
+  let summaryHTML = '<div class = "summary">';
+  summaryHTML += '<div class="results-container">';
 
   if (Object.keys(successfulMatches).length === 0) {
-    grid.innerHTML += "<h3>No successful match</h3>";
+    summaryHTML += "<h3>No successful match</h3>";
   } else {
-    grid.innerHTML += "<h3>Successful Matches</h3>";
+    summaryHTML += "<h3>Successful Matches</h3>";
     Object.entries(successfulMatches).forEach(([category, words]) => {
-      grid.innerHTML += `
+      summaryHTML += `
         <div class="summary-category">
             <strong>${category}:</strong> ${words.join(", ")}  
         </div>`; //join() converts arry to string with comma+space between words
     });
   }
+  summaryHTML += "</div>";
+
   // Add play again button
-  grid.innerHTML += `
-    <button onclick="showStartButton()" style="padding: 10px 20px; margin-top: 20px;">
+  summaryHTML += `
+    <button onclick="showStartButton()" class="play-again-button">
         Play Again
     </button>
 </div>`;
+
+  console.log("Successful Matches", successfulMatches);
+  grid.innerHTML = summaryHTML;
 }
 
 // Reset game to start screen
