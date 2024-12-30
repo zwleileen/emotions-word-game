@@ -1,7 +1,8 @@
 body {
-    font-family: "Atma", serif;
-    font-weight: 400;
+    font-family: "Handlee", serif;
+    font-weight: 900;
     font-style: normal;
+    color: #6f420a;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,15 +24,16 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1em;
-    font-size: 1em;
+    font-size: 1.5em;
 }
 
 .target-category {
     text-align: center;
-    font-size: 2em;
-    font-weight: bold;
-    color: #2196F3;
-    text-transform: uppercase;
+    font-family: "Atma", serif;
+    font-size: 3em;
+    font-weight: 900;
+    color: #a55402;
+    text-transform: capitalize;
 }
 
 .word-grid {
@@ -44,59 +46,64 @@ body {
 /* Word button created from js that adds to every word-grid */
 .word-button {
     padding: 10px;
-    border: 2px solid #ddd;
+    border: 2px solid #6f420a;
     border-radius: 5px;
     background: white;
     cursor: pointer;
-    font-size: 1em; 
+    font-size: 1em;
+    color: #a55402;
+    text-transform: capitalize;
 }
 
 .word-button.selected {
-    background: #e0e0e0;
-    border-color: #2196F3;
+    background: #f9d4ac;
+    border-color: #f9d4ac;
 }
 
 /* Game instructions text */
 .instructions {
     text-align: center;
-    margin: 1em;
-    color: #666;
+    margin: 0.5em;
+    color: #a55402;
+    font-size: 1.5em;
 }
 
 .feedback {
+    font-family: "Atma", serif;
     text-align: center;
     margin: 1em;
-    font-weight: bold;
+    font-weight: 900;
+    font-size: 2em;
+    color: #a55402;
+}
+
+/* Summary created from js that replaces the word-grid*/
+.summary {
+    font-family: "Atma", serif;
     font-size: 2em;
 }
 
 #start-title {
-    display:flex;
-    justify-content: center;    /* horizontal center */
-    align-items: center;        /* vertical center */
-    height: 50%;
-    font-weight: normal;
+    font-family: "Dancing Script", serif;
+    text-align: center;
     font-size: 3em;
-    margin: 0;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
 }
 
 #start-message, #start-instructions {
-    display:flex;
-    justify-content: center;    /* horizontal center */
-    align-items: center;        /* vertical center */
-    height: 50%;
+    text-align: center;
     font-weight: normal;
     font-size: 1.4em;
-    text-align: center;
-    margin: 0.8em;
+    line-height: 1.5;
 }
 
-/* Start button styling */
 .start-button {
     display: block; 
     margin: 1em auto; /*use auto for left/right centering*/
-    padding: 1em 2em;
-    font-size: 1em;
+    padding: 0.5em 1em;
+    font-size: 1.3em;
+    font-weight: 900;
     background: #855509;
     color: white;
     border: none;

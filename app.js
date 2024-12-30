@@ -26,7 +26,7 @@ let successfulMatches = {};
 
 // Hide start button and initiate new game
 document.getElementById("start-button").addEventListener("click", function () {
-  this.style.display = "none";
+  this.parentElement.style.display = "none";
   document.getElementById("game-content").style.display = "block";
   startNewGame();
 });
@@ -133,6 +133,7 @@ function checkSelection() {
   }
 }
 
+//replaces word-grid with a summary grid
 function showFinalResults() {
   const grid = document.getElementById("word-grid");
   grid.innerHTML = '<div class = "summary">';
@@ -140,7 +141,7 @@ function showFinalResults() {
   if (Object.keys(successfulMatches).length === 0) {
     grid.innerHTML += "<h3>No successful match</h3>";
   } else {
-    grid.innerHTML += "<h3>Successful Matches:</h3>";
+    grid.innerHTML += "<h3>Successful Matches</h3>";
     Object.entries(successfulMatches).forEach(([category, words]) => {
       grid.innerHTML += `
         <div class="summary-category">
@@ -159,7 +160,7 @@ function showFinalResults() {
 // Reset game to start screen
 function showStartButton() {
   document.getElementById("game-content").style.display = "none";
-  document.getElementById("start-button").style.display = "block";
+  document.getElementById("start-content").style.display = "block";
   successfulMatches = {}; // Reset score
 }
 
