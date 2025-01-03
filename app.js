@@ -34,7 +34,7 @@ document.getElementById("start-button").addEventListener("click", function () {
 // Randomly shuffle an array (Fisher-Yates algorithm)
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(Math.random() * (i + 1)); //e.g. if i = 2, returns a number between 0 and 2 because math.floor turns 2.9 into 2
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
@@ -45,26 +45,26 @@ function setupRound(resetTries = false) {
     triesLeft = 3;
     document.getElementById("tries").textContent = triesLeft;
   }
-
+  // Get random categoryName
   const categoryNames = Object.keys(categories);
   currentCategory =
     categoryNames[Math.floor(Math.random() * categoryNames.length)];
   document.getElementById("category").textContent = currentCategory;
 
-  // Get randomly 3 words belonging to the category
+  // Get random 3 words belonging to the categoryName
   let words = shuffle([...categories[currentCategory]]).slice(0, 3);
 
   // Get up to 9 random words from other categories
   const otherWords = shuffle(
     Object.entries(categories) //creates entries of [key,value] pair, in this case ['scared',['confused','rejected']]
-      .filter((category) => category[0] !== currentCategory) //filter goes through every category and filters out category[0] that is currentCategory
+      .filter((category) => category[0] !== currentCategory) //filter goes through every category (entry) and filters out category[0] (or the key) that is currentCategory
       .flatMap(([, words]) => words) //ignores the key in the [key,value] and just takes the value
   ).slice(0, 9); //takes 9 words or less after shuffling
 
   words = shuffle([...words, ...otherWords]);
 
   const grid = document.getElementById("word-grid");
-  grid.innerHTML = "";
+  grid.innerHTML = ""; //clears the grid before adding word-buttons
   words.forEach((word) => {
     //add a CSS class word-button to style it
     const button = document.createElement("button");
@@ -159,7 +159,7 @@ function showFinalResults() {
     </button>
 </div>`;
 
-  console.log("Successful Matches", successfulMatches);
+  //   console.log("Successful Matches", successfulMatches);
   grid.innerHTML = summaryHTML;
 }
 
