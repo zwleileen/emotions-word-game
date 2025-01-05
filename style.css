@@ -18,8 +18,38 @@ body {
     border-radius: 2em;
     min-height: 30em; /* min height so that it can grow*/
     min-width: 40em;
-    max-width: 80em;
-    width: auto;
+    max-width: 60em;
+    /* width: auto; */
+}
+#start-title {
+    font-family: "Dancing Script", serif;
+    text-align: center;
+    font-size: 3em;
+    margin: 0.5em 0;
+}
+
+#start-message, #start-instructions {
+    text-align: center;
+    font-weight: normal;
+    font-size: 1.4em;
+    line-height: 1.5;
+}
+
+.start-button {
+    display: block; 
+    margin: 1em auto 0; /*use auto for left/right centering*/
+    padding: 0.5em 1em;
+    font-family: "Handlee", serif;
+    font-size: 1.3em;
+    font-weight: 900;
+    background: #855509;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.start-button:hover {
+    background: #a47426;
 }
 
 .stats {
@@ -38,9 +68,17 @@ body {
     text-transform: capitalize;
 }
 
+/* Game instructions text */
+.instructions {
+    text-align: center;
+    margin: 0.5em;
+    color: #a55402;
+    font-size: 1.5em;
+}
+
 .word-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr; /*divided into 4 columns equally*/
     gap: 1em;
     margin: 1em 0;
     height: auto;
@@ -64,14 +102,6 @@ body {
     border-color: #f9d4ac;
 }
 
-/* Game instructions text */
-.instructions {
-    text-align: center;
-    margin: 0.5em;
-    color: #a55402;
-    font-size: 1.5em;
-}
-
 .feedback {
     font-family: "Atma", serif;
     text-align: center;
@@ -85,18 +115,24 @@ body {
 .summary {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
 }
 .results-container {
     display: grid;             /* change to grid to allow horizontal expansion */
     grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));  /* Responsive columns */
     gap: 1em;
     width: 100%;
+    justify-items: center;
 }
 .results-container h3 {
     grid-column: 1 / -1;  /* Span all columns */
     font-family: "Dancing Script", serif;
-    font-size: 2.5em;
+    font-size: 2em;
+    text-align: center;
+    width: 100%;
     color: #a55402;
     margin-bottom: 0.5em;
 }
@@ -106,6 +142,8 @@ body {
     padding: 0.5em;
     font-size: 1em;
     line-height: 1;
+    text-align: center;
+    width: fit-content;
 }
 
 .play-again-button {
@@ -125,37 +163,6 @@ body {
     background: #a47426;
 }
 
-#start-title {
-    font-family: "Dancing Script", serif;
-    text-align: center;
-    font-size: 3em;
-    margin-block-start: 0.5em;
-    margin-block-end: 0.5em;
-}
-
-#start-message, #start-instructions {
-    text-align: center;
-    font-weight: normal;
-    font-size: 1.4em;
-    line-height: 1.5;
-}
-
-.start-button {
-    display: block; 
-    margin: 1em auto; /*use auto for left/right centering*/
-    padding: 0.5em 1em;
-    font-family: "Handlee", serif;
-    font-size: 1.3em;
-    font-weight: 900;
-    background: #855509;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.start-button:hover {
-    background: #a47426;
-}
 
 .game-content {
     display: none;

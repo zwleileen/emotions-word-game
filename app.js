@@ -159,7 +159,7 @@ function showFinalResults() {
     </button>
 </div>`;
 
-  //   console.log("Successful Matches", successfulMatches);
+  console.log("Successful Matches", successfulMatches);
   grid.innerHTML = summaryHTML;
 }
 
