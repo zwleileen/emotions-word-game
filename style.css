@@ -38,14 +38,20 @@ body {
     margin: 0.5em 0;
 }
 
-#start-message, #start-instructions {
+#start-message, #start-instructions{
     text-align: center;
     font-weight: normal;
     font-size: 1.4em;
     line-height: 1.5;
 }
+.start-buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 1em 0;
+}
 
-.start-button {
+#start-button {
     display: block; 
     margin: 1em auto 0; /*use auto for left/right centering*/
     padding: 0.5em 1em;
