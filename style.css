@@ -145,7 +145,6 @@ body {
     text-align: center;
     width: 100%;
     color: #a55402;
-    margin-bottom: 0.5em;
 }
 .summary-category {
     background-color: white;
@@ -155,6 +154,7 @@ body {
     line-height: 1;
     text-align: center;
     width: fit-content;
+    margin: 0.5em;
 }
 
 .play-again-button {

@@ -172,7 +172,7 @@ function showFinalResults() {
     categoriesWithMatches.forEach(([category, matches]) => {
       summaryHTML += `
         <div class="summary-category">
-            <strong>${category}:</strong>${matches
+            <strong>${category}:</strong> ${matches
         .map((match) => match.join(", "))
         .join(" | ")}  
         </div>`; //creates a new array transforming each match into a string joined by "," and matches into a string joined by "|"
@@ -199,7 +199,7 @@ function showStartButton() {
   successfulMatches = Object.keys(categories).reduce((acc, category) => {
     acc[category] = [];
     return acc;
-  }, {}); //clears successMatches
+  }, {}); //Reset successfulMatches to initial state using reduce, which takes the callback function(acc) that accumulates/adds new category as an [] array
 }
 
 function startNewGame() {
