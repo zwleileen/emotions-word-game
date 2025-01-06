@@ -226,7 +226,7 @@ function showFinalResults() {
         <div class="summary-category">
             <strong>${category}:</strong> ${matches
         .map((match) => match.join(", "))
-        .join("  |  ")}  
+        .join(" | ")}  
         </div>`; //creates a new array transforming each match into a string joined by "," and matches into a string joined by "|"
     });
   }
