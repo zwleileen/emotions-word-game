@@ -22,7 +22,10 @@ let currentCategory = "";
 let triesLeft = 3;
 let timeLeft = 60;
 let timer;
-let successfulMatches = {};
+let successfulMatches = {
+  Scared: [], //initialised as an array so that it can accept as many words anytime with .push, instead of being replaced, but successfulMatches itself is still an object
+  Joyful: [],
+};
 
 // Hide start button and initiate new game
 document.getElementById("start-button").addEventListener("click", function () {
@@ -121,7 +124,7 @@ function checkSelection() {
 
   const feedback = document.getElementById("feedback");
   if (correct) {
-    successfulMatches[currentCategory] = selectedWords; // don't use .push() because successfulMatches is an object, not an array
+    successfulMatches[currentCategory].push([...selectedWords]); //retrieves the initial empty array of the currentCategory and pushes words into it
     feedback.textContent = "Correct!";
 
     // sets 1.5s delay after correct match to reset the round
@@ -158,14 +161,19 @@ function showFinalResults() {
   let summaryHTML = '<div class = "summary">';
   summaryHTML += '<div class="results-container">';
 
-  if (Object.keys(successfulMatches).length === 0) {
+  const categoriesWithMatches = Object.entries(successfulMatches).filter(
+    ([, matches]) => matches.length > 0
+  );
+
+  if (categoriesWithMatches === 0) {
     summaryHTML += "<h3>No successful match</h3>";
   } else {
     summaryHTML += "<h3>Successful Matches</h3>";
-    Object.entries(successfulMatches).forEach(([category, words]) => {
+    categoriesWithMatches.forEach(([category, matches]) => {
       summaryHTML += `
         <div class="summary-category">
-            <strong>${category}:</strong> ${words.join(", ")}  
+            <strong>${category}:</strong> 
+            ${matches.map((matches) => matches.join(", ")).join(" | ")}  
         </div>`; //join() converts arry to string with comma+space between words
     });
   }
