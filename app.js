@@ -215,7 +215,7 @@ function showFinalResults() {
 
   const categoriesWithMatches = Object.entries(successfulMatches).filter(
     ([, matches]) => matches.length > 0
-  );
+  ); //converts successfulMatches into [key,value] pairs and filters out categories with no match or empty array
 
   if (categoriesWithMatches.length === 0) {
     summaryHTML += "<h3>No successful match</h3>";
