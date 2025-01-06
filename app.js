@@ -1,20 +1,38 @@
 const categories = {
   Scared: [
-    "confused",
-    "rejected",
-    "helpless",
-    "submissive",
-    "insecure",
-    "anxious",
+    "Confused",
+    "Rejected",
+    "Helpless",
+    "Submissive",
+    "Insecure",
+    "Anxious",
   ],
   Joyful: [
-    "excited",
-    "sensuous",
-    "energetic",
-    "cheerful",
-    "creative",
-    "hopeful",
+    "Excited",
+    "Sensuous",
+    "Energetic",
+    "Cheerful",
+    "Creative",
+    "Hopeful",
   ],
+  Powerful: [
+    "Aware",
+    "Proud",
+    "Respected",
+    "Appreciated",
+    "Important",
+    "Faithful",
+  ],
+  Peaceful: [
+    "Nurturing",
+    "Trusting",
+    "Loving",
+    "Intimate",
+    "Thoughtful",
+    "Content",
+  ],
+  Sad: ["Tired", "Bored", "Lonely", "Depressed", "Ashamed", "Guilty"],
+  Mad: ["Hurt", "Hostile", "Angry", "Selfish", "Hateful", "Critical"],
 };
 
 let selectedWords = [];
@@ -25,6 +43,10 @@ let timer;
 let successfulMatches = {
   Scared: [], //initialised as an array so that it can accept as many words anytime with .push, instead of being replaced, but successfulMatches itself is still an object
   Joyful: [],
+  Powerful: [],
+  Peaceful: [],
+  Sad: [],
+  Mad: [],
 };
 let targetWordCount = 2;
 
@@ -88,12 +110,13 @@ function setupRound(resetTries = false) {
     targetWordCount
   );
 
-  // Get up to 9 random words from other categories
+  // Get random words from other categories
+  let otherWordCount = 10 - targetWordCount;
   const otherWords = shuffle(
     Object.entries(categories) //creates entries of [key,value] pair, in this case ['scared',['confused','rejected']]
       .filter((category) => category[0] !== currentCategory) //filter goes through every category (entry) and filters out category[0] (or the key) that is currentCategory
       .flatMap(([, words]) => words) //ignores the key in the [key,value] and just takes the value
-  ).slice(0, 9); //takes 9 words or less after shuffling
+  ).slice(0, otherWordCount);
 
   words = shuffle([...words, ...otherWords]);
 
