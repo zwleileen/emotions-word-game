@@ -1,6 +1,6 @@
 const categories = {
   Scared: [
-    "Confused",
+    "Bewildered",
     "Rejected",
     "Helpless",
     "Submissive",
@@ -9,30 +9,30 @@ const categories = {
   ],
   Joyful: [
     "Excited",
-    "Sensuous",
+    "Fascinating",
     "Energetic",
     "Cheerful",
-    "Creative",
+    "Playful",
     "Hopeful",
   ],
   Powerful: [
-    "Aware",
+    "Surprised",
     "Proud",
     "Respected",
-    "Appreciated",
+    "Valuable",
     "Important",
-    "Faithful",
+    "Confident",
   ],
   Peaceful: [
-    "Nurturing",
+    "Thankful",
     "Trusting",
     "Loving",
-    "Intimate",
+    "Responsive",
     "Thoughtful",
     "Content",
   ],
-  Sad: ["Tired", "Bored", "Lonely", "Depressed", "Ashamed", "Guilty"],
-  Mad: ["Hurt", "Hostile", "Angry", "Selfish", "Hateful", "Critical"],
+  Sad: ["Tired", "Bored", "Lonely", "Inferior", "Ashamed", "Guilty"],
+  Mad: ["Distant", "Hostile", "Angry", "Selfish", "Irritated", "Critical"],
 };
 
 let selectedWords = [];
@@ -111,7 +111,7 @@ function setupRound(resetTries = false) {
   );
 
   // Get random words from other categories
-  let otherWordCount = 10 - targetWordCount;
+  let otherWordCount = 12 - targetWordCount;
   const otherWords = shuffle(
     Object.entries(categories) //creates entries of [key,value] pair, in this case ['scared',['confused','rejected']]
       .filter((category) => category[0] !== currentCategory) //filter goes through every category (entry) and filters out category[0] (or the key) that is currentCategory
