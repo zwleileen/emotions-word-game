@@ -44,6 +44,8 @@ function setupRound(resetTries = false) {
   if (resetTries) {
     triesLeft = 3;
     document.getElementById("tries").textContent = triesLeft;
+    timeLeft = 60;
+    document.getElementById("timer").textContent = timeLeft;
   }
   // Get random categoryName
   const categoryNames = Object.keys(categories);
@@ -76,6 +78,22 @@ function setupRound(resetTries = false) {
   });
   selectedWords = [];
   document.getElementById("feedback").textContent = "";
+}
+
+function startTimer() {
+  clearInterval(timer); // Clear any existing timer
+  timeLeft = 60;
+  document.getElementById("timer").textContent = timeLeft;
+
+  timer = setInterval(() => {
+    timeLeft--;
+    document.getElementById("timer").textContent = timeLeft;
+
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      showFinalResults();
+    }
+  }, 1000);
 }
 
 function selectWord(button, word) {
@@ -135,6 +153,7 @@ function checkSelection() {
 
 //replaces word-grid with a summary grid
 function showFinalResults() {
+  clearInterval(timer);
   const grid = document.getElementById("word-grid");
   let summaryHTML = '<div class = "summary">';
   summaryHTML += '<div class="results-container">';
@@ -168,8 +187,10 @@ function showStartButton() {
   document.getElementById("game-content").style.display = "none";
   document.getElementById("start-content").style.display = "flex";
   successfulMatches = {}; // Reset score
+  clearInterval(timer); //Reset timer
 }
 
 function startNewGame() {
   setupRound(true);
+  startTimer();
 }
