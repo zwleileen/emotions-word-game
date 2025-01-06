@@ -27,7 +27,7 @@ let successfulMatches = {};
 // Hide start button and initiate new game
 document.getElementById("start-button").addEventListener("click", function () {
   this.parentElement.style.display = "none";
-  document.getElementById("game-content").style.display = "block";
+  document.getElementById("game-content").style.display = "flex";
   startNewGame();
 });
 
@@ -166,7 +166,7 @@ function showFinalResults() {
 // Reset game to start screen
 function showStartButton() {
   document.getElementById("game-content").style.display = "none";
-  document.getElementById("start-content").style.display = "block";
+  document.getElementById("start-content").style.display = "flex";
   successfulMatches = {}; // Reset score
 }
 

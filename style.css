@@ -21,6 +21,16 @@ body {
     max-width: 60em;
     /* width: auto; */
 }
+#start-content {
+    flex-direction: column;
+    align-items: center;
+}
+#game-content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
 #start-title {
     font-family: "Dancing Script", serif;
     text-align: center;
@@ -55,6 +65,7 @@ body {
 .stats {
     display: flex;
     justify-content: space-between;
+    width: 100%;
     margin-bottom: 1em;
     font-size: 1.5em;
 }
@@ -77,10 +88,14 @@ body {
 }
 
 .word-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; /*divided into 4 columns equally*/
-    gap: 1em;
-    margin: 1em 0;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2em;
+    row-gap: 2em;
+    align-content: space-between;
+    justify-content: space-between;
+    width: 100%;
+    margin: 1em;
     height: auto;
 }
 
@@ -117,18 +132,14 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 90%;
-    margin: 0 auto;
 }
 .results-container {
-    display: grid;             /* change to grid to allow horizontal expansion */
-    grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));  /* Responsive columns */
-    gap: 1em;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
     justify-items: center;
+    align-items: center;
 }
 .results-container h3 {
-    grid-column: 1 / -1;  /* Span all columns */
     font-family: "Dancing Script", serif;
     font-size: 2em;
     text-align: center;
@@ -148,7 +159,7 @@ body {
 
 .play-again-button {
     display: block;
-    margin: 1em auto;
+    margin: 2em auto;
     padding: 0.5em 1.5em;
     font-family: "Handlee", serif;
     font-size: 1.2em;
@@ -162,7 +173,6 @@ body {
 .play-again-button:hover {
     background: #a47426;
 }
-
 
 .game-content {
     display: none;
