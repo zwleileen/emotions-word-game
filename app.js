@@ -26,13 +26,35 @@ let successfulMatches = {
   Scared: [], //initialised as an array so that it can accept as many words anytime with .push, instead of being replaced, but successfulMatches itself is still an object
   Joyful: [],
 };
+let targetWordCount = 2;
 
 // Hide start button and initiate new game
-document.getElementById("start-button").addEventListener("click", function () {
-  this.parentElement.style.display = "none";
-  document.getElementById("game-content").style.display = "flex";
-  startNewGame();
-});
+document
+  .getElementById("start-button-2")
+  .addEventListener("click", function () {
+    targetWordCount = 2;
+    document.getElementById("start-content").style.display = "none";
+    document.getElementById("game-content").style.display = "flex";
+    startNewGame();
+  });
+
+document
+  .getElementById("start-button-4")
+  .addEventListener("click", function () {
+    targetWordCount = 4;
+    document.getElementById("start-content").style.display = "none";
+    document.getElementById("game-content").style.display = "flex";
+    startNewGame();
+  });
+
+document
+  .getElementById("start-button-6")
+  .addEventListener("click", function () {
+    targetWordCount = 6;
+    document.getElementById("start-content").style.display = "none";
+    document.getElementById("game-content").style.display = "flex";
+    startNewGame();
+  });
 
 // Randomly shuffle an array (Fisher-Yates algorithm)
 function shuffle(array) {
@@ -44,6 +66,10 @@ function shuffle(array) {
 }
 
 function setupRound(resetTries = false) {
+  document.querySelector(
+    ".instructions"
+  ).textContent = `Find ${targetWordCount} words that match this emotion!`;
+
   if (resetTries) {
     triesLeft = 3;
     document.getElementById("tries").textContent = triesLeft;
@@ -56,8 +82,11 @@ function setupRound(resetTries = false) {
     categoryNames[Math.floor(Math.random() * categoryNames.length)];
   document.getElementById("category").textContent = currentCategory;
 
-  // Get random 3 words belonging to the categoryName
-  let words = shuffle([...categories[currentCategory]]).slice(0, 3);
+  // Get random words belonging to the categoryName
+  let words = shuffle([...categories[currentCategory]]).slice(
+    0,
+    targetWordCount
+  );
 
   // Get up to 9 random words from other categories
   const otherWords = shuffle(
@@ -107,11 +136,11 @@ function selectWord(button, word) {
     selectedWords = selectedWords.filter((w) => w !== word);
   }
   // if button is not selected and selectedWords < 3, then select it
-  else if (selectedWords.length < 3) {
+  else if (selectedWords.length < targetWordCount) {
     button.classList.add("selected");
     selectedWords.push(word);
     // then immediately check if there are already 3 selected words
-    if (selectedWords.length === 3) {
+    if (selectedWords.length === targetWordCount) {
       checkSelection();
     }
   }

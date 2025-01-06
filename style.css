@@ -38,7 +38,7 @@ body {
     margin: 0.5em 0;
 }
 
-#start-message, #start-instructions{
+#start-message, #start-instructions {
     text-align: center;
     font-weight: normal;
     font-size: 1.4em;
@@ -51,7 +51,7 @@ body {
     margin: 1em 0;
 }
 
-#start-button {
+#start-button-2, #start-button-4, #start-button-6 {
     display: block; 
     margin: 1em auto 0; /*use auto for left/right centering*/
     padding: 0.5em 1em;
