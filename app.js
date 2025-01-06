@@ -217,7 +217,7 @@ function showFinalResults() {
     ([, matches]) => matches.length > 0
   );
 
-  if (categoriesWithMatches === 0) {
+  if (categoriesWithMatches.length === 0) {
     summaryHTML += "<h3>No successful match</h3>";
   } else {
     summaryHTML += "<h3>Successful Matches</h3>";
@@ -226,7 +226,7 @@ function showFinalResults() {
         <div class="summary-category">
             <strong>${category}:</strong> ${matches
         .map((match) => match.join(", "))
-        .join(" | ")}  
+        .join("  |  ")}  
         </div>`; //creates a new array transforming each match into a string joined by "," and matches into a string joined by "|"
     });
   }

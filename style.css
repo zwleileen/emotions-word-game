@@ -104,7 +104,7 @@ body {
 
 /* Word button created from js that adds to every word-grid */
 .word-button {
-    flex-basis: calc(25% - 2em);
+    flex-basis: calc(25% - 2em); /*4 items per row accounting for 2em gap*/
     padding: 10px;
     border: 2px solid #6f420a;
     border-radius: 5px;
