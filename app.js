@@ -172,9 +172,10 @@ function showFinalResults() {
     categoriesWithMatches.forEach(([category, matches]) => {
       summaryHTML += `
         <div class="summary-category">
-            <strong>${category}:</strong> 
-            ${matches.map((matches) => matches.join(", ")).join(" | ")}  
-        </div>`; //join() converts arry to string with comma+space between words
+            <strong>${category}:</strong>${matches
+        .map((match) => match.join(", "))
+        .join(" | ")}  
+        </div>`; //creates a new array transforming each match into a string joined by "," and matches into a string joined by "|"
     });
   }
   summaryHTML += "</div>";
@@ -194,8 +195,11 @@ function showFinalResults() {
 function showStartButton() {
   document.getElementById("game-content").style.display = "none";
   document.getElementById("start-content").style.display = "flex";
-  successfulMatches = {}; // Reset score
   clearInterval(timer); //Reset timer
+  successfulMatches = Object.keys(categories).reduce((acc, category) => {
+    acc[category] = [];
+    return acc;
+  }, {}); //clears successMatches
 }
 
 function startNewGame() {
