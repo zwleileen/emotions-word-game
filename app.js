@@ -12,11 +12,11 @@ const categories = {
     "Fascinating",
     "Energetic",
     "Creative",
-    "Playful",
-    "Aware",
+    "Cheerful",
+    "Hopeful",
   ],
   Powerful: [
-    "Hopeful",
+    "Aware",
     "Proud",
     "Respected",
     "Appreciated",
@@ -32,7 +32,7 @@ const categories = {
     "Content",
   ],
   Sad: ["Tired", "Bored", "Lonely", "Depressed", "Ashamed", "Guilty"],
-  Mad: ["Hurt", "Hostile", "Angry", "Furious", "Hateful", "Critical"],
+  Mad: ["Hurt", "Hostile", "Angry", "Selfish", "Hateful", "Critical"],
 };
 
 let selectedWords = [];
