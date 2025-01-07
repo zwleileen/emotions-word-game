@@ -1,5 +1,5 @@
 # Project: Emotions Word Game
-This project is about developing a simple game with win or lose feature using Javascript. The game chosen is called "Emotions Word Game". You can play it here: [Link Text](https://zwleileen.github.io/emotions-word-game/).
+This project is about developing a simple game with win or lose feature using JavaScript, HTML and CSS. The game chosen is called "Emotions Word Game". You can play it here: [Link Text](https://zwleileen.github.io/emotions-word-game/).
 
 # Description 
 1. The theme of this game is "emotions" and uses words describing various emotions from The Feeling Wheel developed by Dr. Gloria Willcox. 
@@ -58,61 +58,70 @@ For the results page, instead of showing correct matches belonging to the same c
 ![Final results page](https://i.imgur.com/jRGoKOS.png)
   
 # Pseudocode
-1. Define and initialise game state
-``` 
+
+These are the variables for the initial game state:
+```
 const categories = {
-    scared: [...],
-    joyful: [...]
+  Scared: [
+    "Bewildered",
+    "Rejected",
+    "Helpless",
+    "Submissive",
+    "Insecure",
+    "Anxious",
+  ],
+  Joyful: [
+    "Excited",
+    "Fascinating",
+    "Energetic",
+    "Cheerful",
+    "Playful",
+    "Hopeful",
+  ],
+  // and 4 more categories
 }
 
-let selectedWords
-let currentCategory
-let triesLeft
-let timeLeft
-let successfulMatches
+let selectedWords = [];
+let currentCategory = "";
+let triesLeft = 3;
+let timeLeft = 60;
+let timer;
+let successfulMatches = {
+  Scared: [],
+  Joyful: [],
+  Powerful: [],
+  Peaceful: [],
+  Sad: [],
+  Mad: [],
+};
+let targetWordCount = 2 // or 4 or 6;
 ```
-2. Add event listeners
-```
-startButton -> click
-- replace landing page with gameState
+The general logic of the game is as follows:
 
-gameState
-- display triesLeft
-- display timeLeft, countdown from 60s
-- display a random category as header
-- displayWords
+When any of the buttons on the landing page is clicked, proceed to setupRound():
+  - Replace the landing page with initial game state and
+    SET triesLeft = 3
+    SET timeLeft = 60 seconds
+    
+  - While timeLeft > 0 AND triesLeft > 0, display a random category and a number of random words = targetWordCount belonging to that category
+  - Retrieve random words from other categories so that total words displayed is 12
+  - Each word appears as a HTML button, appended to the parent HTML "word-grid", with event listener linked to selectWord()
+  - Start timer countdown
 
-displayWords 
-- display 12 cards with words in them
-- 3 words must be drawn from the category and are "correct"
-- fill the rest of the cards with randomly drawn words that are "wrong"
+When a button is clicked, it activates the selectWord():
+  - If button is already selected, deselect it
+  - If not, select it and immediately proceed to checkSelection()
 
-selectedWords -> click
-- word changes color to indicate selection is registered
-- checkSelection
+The checkSelection() provides feedback on whether a match is correct or wrong:
+  - If match is correct, proceed to display the next game set with triesLeft and timeLeft continuing
+  - If not, reduce triesLeft by 1 and immediately check if triesLeft is still > 0, then proceed to deselect all buttons
+  - If triesLeft <= 0 or timeLeft <= 0, proceed to showFinalResults()
 
-checkSelection
-- check if selected words are "correct", if 3 "correct" words are chosen, store them in resultsMatch, display "correct", start newRound 
-- if not, revert the words to original color and reduce triesLeft by 1, display "wrong"
+# Key learnings
 
-newRound
-- display a new category randomly
-- displayWords
+## Grid versus Flex
+Initially, I had used grid for placing the buttons, but realised its restriction when I wanted to replace the buttons with final results. Using grid, the final results would be displayed at 
 
-endGame
-- when timeLeft is 0, replace gameState with results
-
-results
-- if there are successful matches, display the list from resultsMatch
-- if not, display tryAgain message
-- display resetButton
-
-resetButton -> click, display gameState
-
-```
-3. Invoke the init()
-
-4. Invoke render()
 
 # Why this game
 In the book titled "How Emotions are Made: The Secret Life of the Brain" by Dr. Lisa Feldman Barrett, she shared about the importance of emotional granularity in developing emotional intelligence. Being able to accurately label our emotions can help us to better understand, regulate and communicate them. Studies have shown that people with more vocabulary describing their emotions i.e. emotional granularity are better equipped to handle adversity. This game aims to make it easier for everyone to remember more granular emotions and hopefully use them in our day to day.
