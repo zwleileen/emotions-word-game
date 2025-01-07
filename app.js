@@ -256,7 +256,7 @@ function showStartButton() {
   successfulMatches = Object.keys(categories).reduce((acc, category) => {
     acc[category] = [];
     return acc;
-  }, {}); // Reset successfulMatches to initial state using reduce, which takes the callback function(acc) that accumulates/adds new category as an [] array
+  }, {}); // Reset successfulMatches to initial state using reduce, which takes the callback function(acc) that accumulates/adds each category to a new array e.g. acc["Scared"]=[] adds {Scared: []}
 }
 
 function startNewGame() {
