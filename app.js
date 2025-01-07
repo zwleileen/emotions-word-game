@@ -134,6 +134,7 @@ function setupRound(resetTries = false) {
     // Add the button to the grid
     grid.appendChild(button);
   });
+  selectedWords = []; // Clear the selectedWords
   document.getElementById("feedback").textContent = "";
 }
 
