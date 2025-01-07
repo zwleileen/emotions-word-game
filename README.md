@@ -122,6 +122,21 @@ The checkSelection() provides feedback on whether a match is correct or wrong:
 ## Grid versus Flex
 Initially, I had used grid for placing the buttons, but realised its restriction when I wanted to replace the buttons with final results. Using grid, the final results would be displayed at 
 
+## Displaying multiple results for the same category
+```
+let successfulMatches = {
+  Scared: [], // Initialised as an array so that it can accept as many words anytime with .push, instead of being replaced, but successfulMatches itself is still an object
+  Joyful: [],
+  Powerful: [],
+  Peaceful: [],
+  Sad: [],
+  Mad: [],
+};
+```
+
+## Adding options for user to choose number of words to match
+
+## When the check has to be immediate
 
 # Why this game
 In the book titled "How Emotions are Made: The Secret Life of the Brain" by Dr. Lisa Feldman Barrett, she shared about the importance of emotional granularity in developing emotional intelligence. Being able to accurately label our emotions can help us to better understand, regulate and communicate them. Studies have shown that people with more vocabulary describing their emotions i.e. emotional granularity are better equipped to handle adversity. This game aims to make it easier for everyone to remember more granular emotions and hopefully use them in our day to day.
