@@ -1,7 +1,7 @@
 const categories = {
   Scared: [
-    "Bewildered",
     "Rejected",
+    "Confused",
     "Helpless",
     "Submissive",
     "Insecure",
@@ -11,15 +11,15 @@ const categories = {
     "Excited",
     "Fascinating",
     "Energetic",
-    "Cheerful",
+    "Creative",
     "Playful",
-    "Hopeful",
+    "Aware",
   ],
   Powerful: [
-    "Surprised",
+    "Hopeful",
     "Proud",
     "Respected",
-    "Valuable",
+    "Appreciated",
     "Important",
     "Confident",
   ],
@@ -31,8 +31,8 @@ const categories = {
     "Thoughtful",
     "Content",
   ],
-  Sad: ["Tired", "Bored", "Lonely", "Inferior", "Ashamed", "Guilty"],
-  Mad: ["Distant", "Hostile", "Angry", "Selfish", "Irritated", "Critical"],
+  Sad: ["Tired", "Bored", "Lonely", "Depressed", "Ashamed", "Guilty"],
+  Mad: ["Hurt", "Hostile", "Angry", "Furious", "Hateful", "Critical"],
 };
 
 let selectedWords = [];
@@ -116,7 +116,7 @@ function setupRound(resetTries = false) {
   const otherWords = shuffle(
     Object.entries(categories) // Create entries of [key,value] pair e.g. ['scared',['confused','rejected']]
       .filter((category) => category[0] !== currentCategory) // Go through every category and keep those that are not same as currentCategory
-      .flatMap(([, words]) => words) // Create a new array that ignores the key in the [key,value] and only takes the value 
+      .flatMap(([, words]) => words) // Create a new array that ignores the key in the [key,value] and only takes the value
   ).slice(0, otherWordCount); // Shuffle the words in the new array and keep only a certain no. of words
 
   words = shuffle([...words, ...otherWords]);
@@ -124,13 +124,12 @@ function setupRound(resetTries = false) {
   const grid = document.getElementById("word-grid");
   grid.innerHTML = ""; // Clear the word-grid's HTML before adding word-button to the HTML
   words.forEach((word) => {
-    
     // Add a CSS class word-button to style it
     const button = document.createElement("button");
     button.className = "word-button";
     button.textContent = word;
     button.addEventListener("click", () => selectWord(button, word)); // Cannot insert return here because the function would exit before appendChild
-    
+
     // Add the button to the grid
     grid.appendChild(button);
   });
@@ -161,8 +160,7 @@ function selectWord(button, word) {
   if (button.classList.contains("selected")) {
     button.classList.remove("selected");
     selectedWords = selectedWords.filter((w) => w !== word); // Go through every word and keep those that are not same as word
-  }
-  else if (selectedWords.length < targetWordCount) {
+  } else if (selectedWords.length < targetWordCount) {
     button.classList.add("selected");
     selectedWords.push(word);
 
@@ -187,12 +185,11 @@ function checkSelection() {
     setTimeout(() => {
       setupRound(false);
     }, 1500);
-  }
-  else {
+  } else {
     triesLeft--;
     document.getElementById("tries").textContent = triesLeft;
     feedback.textContent = "Wrong!";
-    
+
     // Immediately check if triesLeft is 0 then start new round
     if (triesLeft <= 0) {
       setupRound(true);
