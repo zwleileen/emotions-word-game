@@ -16,10 +16,8 @@ body {
     background-color: rgb(252, 241, 216);
     padding: 2em;
     border-radius: 2em;
-    min-height: 30em; /* min height so that it can grow*/
-    min-width: 40em;
-    max-width: 60em;
-    /* width: auto; */
+    min-height: auto;
+    max-width: 50em;
 }
 #start-content {
     flex-direction: column;
@@ -180,4 +178,62 @@ body {
 
 .game-content {
     display: none;
+}
+
+/*Tablet and smaller*/
+@media screen and (max-width: 768px) {
+    body {
+        padding: 1em;
+    }
+    .game-container {
+        padding: 1em;
+        border-radius: 1em;
+    }
+
+    #start-title {
+        font-size: 2em;
+    }
+
+    #start-message, #start-instructions {
+        font-size: 1.2em;
+    }
+
+    .start-buttons-container {
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    #start-button-2, #start-button-4, #start-button-6 {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+/*Mobile phone*/
+@media screen and (max-width: 480px) {
+    .word-grid {
+        gap: 1em;
+        width: 100%;
+    }
+
+    .word-button {
+        flex-basis: calc(50% - 1em); /* 2 buttons per row on mobile */
+        font-size: 1em;
+        padding: 8px;
+    }
+
+    .stats {
+        font-size: 1.2em;
+    }
+
+    .target-category {
+        font-size: 2em;
+    }
+
+    .instructions {
+        font-size: 1.2em;
+    }
+
+    .feedback {
+        font-size: 1.5em;
+    }
 }
