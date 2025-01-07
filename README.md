@@ -1,10 +1,8 @@
-## [6 Jan should show the game almost done e.g. display 4 cards and could match 3 cards]
-
 # Project: Emotions Word Game
-This project is about developing a simple game with win or lose feature using Javascript. The game chosen is called "Emotions Word Game". 
+This project is about developing a simple game with win or lose feature using Javascript. The game chosen is called "Emotions Word Game". You can play it here: [Link Text](https://zwleileen.github.io/emotions-word-game/).
 
 # Description 
-1. The theme of this game is "emotions" and uses words describing various emotions from The Feeling Wheel developed by Dr. Gloria Willcox. She adapted the wheel from the original version developed by Dr. Robert Plutchik.
+1. The theme of this game is "emotions" and uses words describing various emotions from The Feeling Wheel developed by Dr. Gloria Willcox. 
 2. Words that describe emotions can vary from broad level e.g. anger, sadness, to very specific ones e.g. disrespected, isolated. 
 3. As such, they could be used in words matching games that involve categories (broad level) and elements belonging to the categories (specific level).
 
@@ -12,20 +10,21 @@ This project is about developing a simple game with win or lose feature using Ja
 1. The player will be shown random words and a category. 
 2. The player has to select all the words that match the category.
 3. Once a match is successful, the player will be shown another category and has to select all the words that belong to the category. 
-4. The player will aim to match as many as possible within the time given. 
+4. The player will aim for as many correct matches as possible within the time given. 
 5. The player only has 3 tries for wrong matches. 
 
 # User story (includes wireframe)
 - As a user, I want to see a landing page with the name of the game so that I know I'm in the right place.
 - As a user, I want to see the instructions on how to play the game and the start button so that I know what to expect and how to proceed. 
-- As a user, I want to be able to click the start button and see the initial game state (the category and set of words I can select from) so that I can begin playing the game. 
 
 ![Landing page](https://i.imgur.com/XvTuQAg.png)
 
+- As a user, I want to be able to click the start button and see the initial game state (the category and set of words I can select from). 
+- As a user, I want to see the timer counting down so that I know the game has started. 
+
 ![Game state](https://i.imgur.com/iWIWnXz.png)
 
-- As a user, I want to see the timer counting down so that I know the game has started. 
-- As a user, I want to see visual feedback of the word I have selected so that I know my selection has been registered. [think about whether to add a submit button]
+- As a user, I want to see visual feedback of the word I have selected so that I know my selection has been registered. 
 - As a user, I want to see feedback on whether the match is correct or wrong, so that I know whether to change my selection. 
 
 ![Correct match](https://i.imgur.com/ej7ngOH.png)
@@ -42,13 +41,22 @@ This project is about developing a simple game with win or lose feature using Ja
 ![Same set](https://i.imgur.com/Cck9fMv.png)
 
 - As a user, I want to see when the time is up so that I know the game has ended.
-- As a user, I want to see a summary of my results, including all the correct matches I have made, as well as when there is no match, so that I can reflect on the game I have played. [think about what happened if the list gets too long]
+- As a user, I want to see a summary of my results, including all the correct matches I have made, as well as when there is no match, so that I can reflect on the game I have played. 
 - As a user, I want to see a restart button so that I know I can play again. 
 
 ![Results - with matches](https://i.imgur.com/rTV04K7.png)
 
 ![Results - with no match](https://i.imgur.com/rC0b62N.png)
 
+# Final game and deviations from initial wireframe
+I have included options for the user to choose how many words to match. The higher the number of words, the more challenging the game. 
+
+![Final landing page](https://i.imgur.com/eAUGyNN.png)
+
+For the results page, instead of showing correct matches belonging to the same category separately, I have decided to list them together, but separated by " | " between each match.  
+
+![Final results page](https://i.imgur.com/jRGoKOS.png)
+  
 # Pseudocode
 1. Define and initialise game state
 ``` 
