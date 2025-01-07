@@ -41,7 +41,7 @@ let triesLeft = 3;
 let timeLeft = 60;
 let timer;
 let successfulMatches = {
-  Scared: [], //initialised as an array so that it can accept as many words anytime with .push, instead of being replaced, but successfulMatches itself is still an object
+  Scared: [], // Initialised as an array so that it can accept as many words anytime with .push, instead of being replaced, but successfulMatches itself is still an object
   Joyful: [],
   Powerful: [],
   Peaceful: [],
@@ -92,6 +92,7 @@ function setupRound(resetTries = false) {
     ".instructions"
   ).textContent = `Find ${targetWordCount} words that match this emotion!`;
 
+  // Only for new game
   if (resetTries) {
     triesLeft = 3;
     document.getElementById("tries").textContent = triesLeft;
@@ -113,31 +114,32 @@ function setupRound(resetTries = false) {
   // Get random words from other categories
   let otherWordCount = 12 - targetWordCount;
   const otherWords = shuffle(
-    Object.entries(categories) //creates entries of [key,value] pair, in this case ['scared',['confused','rejected']]
-      .filter((category) => category[0] !== currentCategory) //filter goes through every category (entry) and filters out category[0] (or the key) that is currentCategory
-      .flatMap(([, words]) => words) //ignores the key in the [key,value] and just takes the value
-  ).slice(0, otherWordCount);
+    Object.entries(categories) // Create entries of [key,value] pair e.g. ['scared',['confused','rejected']]
+      .filter((category) => category[0] !== currentCategory) // Go through every category and keep those that are not same as currentCategory
+      .flatMap(([, words]) => words) // Create a new array that ignores the key in the [key,value] and only takes the value 
+  ).slice(0, otherWordCount); // Shuffle the words in the new array and keep only a certain no. of words
 
   words = shuffle([...words, ...otherWords]);
 
   const grid = document.getElementById("word-grid");
-  grid.innerHTML = ""; //clears the grid before adding word-buttons
+  grid.innerHTML = ""; // Clear the word-grid's HTML before adding word-button to the HTML
   words.forEach((word) => {
-    //add a CSS class word-button to style it
+    
+    // Add a CSS class word-button to style it
     const button = document.createElement("button");
     button.className = "word-button";
     button.textContent = word;
-    button.addEventListener("click", () => selectWord(button, word)); //cannot insert return here because the function would exit before appendChild
-    //add the button to the grid
+    button.addEventListener("click", () => selectWord(button, word)); // Cannot insert return here because the function would exit before appendChild
+    
+    // Add the button to the grid
     grid.appendChild(button);
   });
-  selectedWords = [];
   document.getElementById("feedback").textContent = "";
 }
 
 function startTimer() {
   clearInterval(timer); // Clear any existing timer
-  timeLeft = 60;
+  timeLeft = 60; // Start countdown from 60
   document.getElementById("timer").textContent = timeLeft;
 
   timer = setInterval(() => {
@@ -145,24 +147,25 @@ function startTimer() {
     document.getElementById("timer").textContent = timeLeft;
 
     if (timeLeft <= 0) {
-      clearInterval(timer);
+      clearInterval(timer); // Stop timer and showFinalResults when it reaches 0
       showFinalResults();
     }
-  }, 1000);
+  }, 1000); //startTimer() runs every 1s which means it deducts 1 from timeLeft every 1s
 }
 
 function selectWord(button, word) {
   if (timeLeft <= 0) return;
-  // if button is already selected, deselect it
+
+  // If button is already selected, deselect it and remove word from the list
   if (button.classList.contains("selected")) {
     button.classList.remove("selected");
-    selectedWords = selectedWords.filter((w) => w !== word);
+    selectedWords = selectedWords.filter((w) => w !== word); // Go through every word and keep those that are not same as word
   }
-  // if button is not selected and selectedWords < 3, then select it
   else if (selectedWords.length < targetWordCount) {
     button.classList.add("selected");
     selectedWords.push(word);
-    // then immediately check if there are already 3 selected words
+
+    // Immediately check if there are already enough selected words
     if (selectedWords.length === targetWordCount) {
       checkSelection();
     }
@@ -176,25 +179,26 @@ function checkSelection() {
 
   const feedback = document.getElementById("feedback");
   if (correct) {
-    successfulMatches[currentCategory].push([...selectedWords]); //retrieves the initial empty array of the currentCategory and pushes words into it
+    successfulMatches[currentCategory].push([...selectedWords]); // Retrieve the initial empty array of the currentCategory and pushes words into it
     feedback.textContent = "Correct!";
 
-    // sets 1.5s delay after correct match to reset the round
+    // Set 1.5s delay after correct match to reset the round
     setTimeout(() => {
       setupRound(false);
     }, 1500);
   }
-  // handle incorrect match
   else {
     triesLeft--;
     document.getElementById("tries").textContent = triesLeft;
     feedback.textContent = "Wrong!";
-    //immediately check if triesLeft is 0 then start new round
+    
+    // Immediately check if triesLeft is 0 then start new round
     if (triesLeft <= 0) {
       setupRound(true);
       showFinalResults();
     }
-    //sets 1s delay after incorrect match to deselect all buttons
+
+    // Set 1s delay after incorrect match to deselect all buttons
     else {
       setTimeout(() => {
         feedback.textContent = "";
@@ -206,7 +210,7 @@ function checkSelection() {
   }
 }
 
-//replaces word-grid with a summary grid
+// Replace word-grid with summay or results
 function showFinalResults() {
   clearInterval(timer);
   const grid = document.getElementById("word-grid");
@@ -215,7 +219,7 @@ function showFinalResults() {
 
   const categoriesWithMatches = Object.entries(successfulMatches).filter(
     ([, matches]) => matches.length > 0
-  ); //converts successfulMatches into [key,value] pairs and filters out categories with no match or empty array
+  ); // Convert successfulMatches into [key,value] pairs and keep only those with value
 
   if (categoriesWithMatches.length === 0) {
     summaryHTML += "<h3>No successful match</h3>";
@@ -227,7 +231,7 @@ function showFinalResults() {
             <strong>${category}:</strong> ${matches
         .map((match) => match.join(", "))
         .join(" | ")}  
-        </div>`; //creates a new array transforming each match into a string joined by "," and matches into a string joined by "|"
+        </div>`; // Create a new array transforming each match into a string joined by "," and all matches into a string joined by "|"
     });
   }
   summaryHTML += "</div>";
@@ -239,7 +243,7 @@ function showFinalResults() {
     </button>
 </div>`;
 
-  console.log("Successful Matches", successfulMatches);
+  console.log("Successful Matches", successfulMatches); // To check results visually
   grid.innerHTML = summaryHTML;
 }
 
@@ -247,11 +251,11 @@ function showFinalResults() {
 function showStartButton() {
   document.getElementById("game-content").style.display = "none";
   document.getElementById("start-content").style.display = "flex";
-  clearInterval(timer); //Reset timer
+  clearInterval(timer); // Reset timer
   successfulMatches = Object.keys(categories).reduce((acc, category) => {
     acc[category] = [];
     return acc;
-  }, {}); //Reset successfulMatches to initial state using reduce, which takes the callback function(acc) that accumulates/adds new category as an [] array
+  }, {}); // Reset successfulMatches to initial state using reduce, which takes the callback function(acc) that accumulates/adds new category as an [] array
 }
 
 function startNewGame() {
