@@ -57,6 +57,8 @@ document
     targetWordCount = 2;
     document.getElementById("start-content").style.display = "none";
     document.getElementById("game-content").style.display = "flex";
+    document.getElementById("category").style.display = "flex";
+    document.getElementById("instructions").style.display = "flex";
     startNewGame();
   });
 
@@ -66,6 +68,8 @@ document
     targetWordCount = 4;
     document.getElementById("start-content").style.display = "none";
     document.getElementById("game-content").style.display = "flex";
+    document.getElementById("category").style.display = "flex";
+    document.getElementById("instructions").style.display = "flex";
     startNewGame();
   });
 
@@ -75,6 +79,8 @@ document
     targetWordCount = 6;
     document.getElementById("start-content").style.display = "none";
     document.getElementById("game-content").style.display = "flex";
+    document.getElementById("category").style.display = "flex";
+    document.getElementById("instructions").style.display = "flex";
     startNewGame();
   });
 
@@ -88,8 +94,8 @@ function shuffle(array) {
 }
 
 function setupRound(resetTries = false) {
-  document.querySelector(
-    ".instructions"
+  document.getElementById(
+    "instructions"
   ).textContent = `Find ${targetWordCount} words that match this emotion!`;
 
   // Only for new game
@@ -211,6 +217,9 @@ function checkSelection() {
 // Replace word-grid with summay or results
 function showFinalResults() {
   clearInterval(timer);
+  document.getElementById("category").style.display = "none";
+  document.getElementById("instructions").style.display = "none";
+
   const grid = document.getElementById("word-grid");
   let summaryHTML = '<div class = "summary">';
   summaryHTML += '<div class="results-container">';
@@ -248,6 +257,8 @@ function showFinalResults() {
 // Reset game to start screen
 function showStartButton() {
   document.getElementById("game-content").style.display = "none";
+  document.getElementById("category").style.display = "none";
+  document.getElementById("instructions").style.display = "none";
   document.getElementById("start-content").style.display = "flex";
   clearInterval(timer); // Reset timer
   successfulMatches = Object.keys(categories).reduce((acc, category) => {
