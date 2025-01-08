@@ -160,16 +160,16 @@ function startTimer() {
 }
 
 function selectWord(button, word) {
+  console.log({ button, word });
   if (timeLeft <= 0) return;
 
   // If button is already selected, deselect it and remove word from the list
   if (button.classList.contains("selected")) {
     button.classList.remove("selected");
-    selectedWords = selectedWords.filter((w) => w !== word); // Go through every word and keep those that are not same as word
+    selectedWords = selectedWords.filter((w) => w !== word); // Go through every word and keep those that are not same as word in a new array
   } else if (selectedWords.length < targetWordCount) {
     button.classList.add("selected");
     selectedWords.push(word);
-
     // Immediately check if there are already enough selected words
     if (selectedWords.length === targetWordCount) {
       checkSelection();
@@ -201,14 +201,23 @@ function checkSelection() {
       setupRound(true);
       showFinalResults();
     }
-
     // Set 1s delay after incorrect match to deselect all buttons
     else {
       setTimeout(() => {
         feedback.textContent = "";
-        const buttons = document.querySelectorAll(".word-button");
-        buttons.forEach((button) => button.classList.remove("selected"));
-        selectedWords = [];
+        const selectedButtons = document.querySelectorAll(
+          ".word-button.selected"
+        );
+        selectedButtons.forEach((button) => {
+          // If button textContent is not included in the currentCategory array, remove "selected"
+          if (!categories[currentCategory].includes(button.textContent)) {
+            button.classList.remove("selected");
+            // Go through every word and keep those that are not the button in a new array
+            selectedWords = selectedWords.filter(
+              (word) => word != button.textContent
+            );
+          }
+        });
       }, 1000);
     }
   }
