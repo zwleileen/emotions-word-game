@@ -37,7 +37,7 @@ const categories = {
 
 let selectedWords = [];
 let currentCategory = "";
-let triesLeft = 3;
+// let triesLeft = 3;
 let timeLeft = 60;
 let timer;
 let successfulMatches = {
@@ -100,8 +100,8 @@ function setupRound(resetTries = false) {
 
   // Only for new game
   if (resetTries) {
-    triesLeft = 3;
-    document.getElementById("tries").textContent = triesLeft;
+    // triesLeft = 3;
+    // document.getElementById("tries").textContent = triesLeft;
     timeLeft = 60;
     document.getElementById("timer").textContent = timeLeft;
   }
@@ -192,36 +192,36 @@ function checkSelection() {
       setupRound(false);
     }, 1500);
   } else {
-    triesLeft--;
-    document.getElementById("tries").textContent = triesLeft;
+    // triesLeft--;
+    // document.getElementById("tries").textContent = triesLeft;
     feedback.textContent = "Wrong!";
 
     // Immediately check if triesLeft is 0 then start new round
-    if (triesLeft <= 0) {
-      setupRound(true);
-      showFinalResults();
-    }
+    // if (triesLeft <= 0) {
+    //   setupRound(true);
+    //   showFinalResults();
+    // }
     // Set 1s delay after incorrect match to deselect all buttons
-    else {
-      setTimeout(() => {
-        feedback.textContent = "";
-        const selectedButtons = document.querySelectorAll(
-          ".word-button.selected"
-        );
-        selectedButtons.forEach((button) => {
-          // If button textContent is not included in the currentCategory array, remove "selected"
-          if (!categories[currentCategory].includes(button.textContent)) {
-            button.classList.remove("selected");
-            // Go through every word and keep those that are not the button in a new array
-            selectedWords = selectedWords.filter(
-              (word) => word != button.textContent
-            );
-          }
-        });
-      }, 1000);
-    }
+    // else {
+    setTimeout(() => {
+      feedback.textContent = "";
+      const selectedButtons = document.querySelectorAll(
+        ".word-button.selected"
+      );
+      selectedButtons.forEach((button) => {
+        // If button textContent is not included in the currentCategory array, remove "selected"
+        if (!categories[currentCategory].includes(button.textContent)) {
+          button.classList.remove("selected");
+          // Go through every word and keep those that are not the button in a new array
+          selectedWords = selectedWords.filter(
+            (word) => word != button.textContent
+          );
+        }
+      });
+    }, 1000);
   }
 }
+// }
 
 // Replace word-grid with summay or results
 function showFinalResults() {

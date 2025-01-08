@@ -189,6 +189,10 @@ body {
     }
     #start-button-2, #start-button-4, #start-button-6 {
         font-size: 1.2em;
+        display: block; 
+        margin: 0.8em auto 0; /*use auto for left/right centering*/
+        padding: 0.2em 0.5em;
+        border-radius: 5px;
     }
     .word-grid {
         gap: 1em;
