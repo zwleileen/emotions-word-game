@@ -45,7 +45,7 @@ This project is about developing a simple game with win or lose feature using Ja
 # Final game and deviations from initial wireframe
 I have included options for the user to choose how many words to match. The higher the number of words, the more challenging the game. 
 
-![Final landing page](https://i.imgur.com/r3tLAfj.png)
+![Final landing page](https://i.imgur.com/g5MCcUw.pngg)
 
 For the results page, instead of showing correct matches belonging to the same category separately, I have decided to list them together, but separated by " | " between each match.  
 
