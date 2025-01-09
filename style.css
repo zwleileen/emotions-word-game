@@ -34,11 +34,19 @@ body {
     font-size: 3em;
     margin: 0.5em 0;
 }
+.instructions-box {
+    background-color: white;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 1em 0;
+    border: 2px solid #6f420a;
+}
 #start-message, #start-instructions {
     text-align: center;
     font-weight: normal;
     font-size: 1.4em;
     line-height: 1.5;
+    margin: 0
 }
 .start-buttons-container {
     display: flex;
@@ -80,7 +88,6 @@ body {
     text-transform: capitalize;
 }
 
-/* Game instructions text */
 .instructions {
     text-align: center;
     margin: 0.5em;
@@ -182,6 +189,10 @@ body {
     #start-title {
         font-size: 2.5em;
         margin: 0.2em 0;
+    }
+    .instructions-box{
+        padding: 1em;
+        margin: 0.5em 0;
     }
     #start-message, #start-instructions {
         font-size: 1.2em;
