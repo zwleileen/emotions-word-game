@@ -45,11 +45,11 @@ This project is about developing a simple game with win or lose feature using Ja
 # Final game and deviations from initial wireframe
 I have included options for the user to choose how many words to match. The higher the number of words, the more challenging the game. 
 
-![Final landing page](https://i.imgur.com/eAUGyNN.png)
+![Final landing page](https://i.imgur.com/r3tLAfj.png)
 
 For the results page, instead of showing correct matches belonging to the same category separately, I have decided to list them together, but separated by " | " between each match.  
 
-![Final results page](https://i.imgur.com/jRGoKOS.png)
+![Final results page](https://i.imgur.com/4BtP1FQ.png)
   
 # Pseudocode
 
@@ -218,8 +218,11 @@ function selectWord(button, word) {
 }
 ```
 
+# Planned future enhancements
+To make the game more engaging, the following features may be added:
+1. Allow user to quit the game halfway and return to main page
+2. Attribute points to every successful match, more points to more number of words matched e.g. 2 points for 2 words matched versus 6 points for 6 words matched, then keep track of the points on a scoreboard
+
 # Why this game
 In the book titled "How Emotions are Made: The Secret Life of the Brain" by Dr. Lisa Feldman Barrett, she shared about the importance of emotional granularity in developing emotional intelligence. Being able to accurately label our emotions can help us to better understand, regulate and communicate them. Studies have shown that people with more vocabulary describing their emotions i.e. emotional granularity are better equipped to handle adversity. This game aims to make it easier for everyone to remember more granular emotions and hopefully use them in our day to day.
-
-
 
