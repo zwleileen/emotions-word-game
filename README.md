@@ -54,7 +54,7 @@ For the results page, instead of showing correct matches belonging to the same c
 # Pseudocode
 
 These are the variables for the initial game state:
-```
+```javascript
 const categories = {
   Scared: [
     "Bewildered",
@@ -112,7 +112,7 @@ The checkSelection() provides feedback on whether a match is correct or wrong:
 Initially, I had used grid for placing the buttons, but realised its restriction when I wanted to replace the buttons with final results. Using grid, the final results would be displayed at the left most column, though I want the results to be displayed in the middle. A possible workaround would be to populate the left most column with empty arrays so that the final results would be pushed to the middle column. 
 
 I decided to change to flex for all because it is much more flexible than grid. I could justify-content and align the items however I wanted. It is also responsive to the expansion/reduction of screen size. 
-```
+```javascript
 .word-grid {
     display: flex;
     flex-wrap: wrap;
@@ -123,7 +123,7 @@ I decided to change to flex for all because it is much more flexible than grid. 
 }
 ```
 To keep the number of buttons per row to 4 while accounting for the 2em gap, I used the following:
-```
+```javascript
 .word-button {
     flex-basis: calc(25% - 2em); 
 }
@@ -131,7 +131,7 @@ To keep the number of buttons per row to 4 while accounting for the 2em gap, I u
 
 ## Displaying multiple results for the same category
 To show all the correct matches in the final results page, I learnt that I had to initialise successfulMatches in the following way:
-```
+```javascript
 let successfulMatches = {
   Scared: [], 
   Joyful: [],
@@ -144,14 +144,14 @@ let successfulMatches = {
 I had to initialise each category as an array so that it can accept any number of successful matches. For example, if a first successful match is {Scared: [rejected, confused]}, and there is a second successful match {Scared: [helpless, submissive]}, then the final results would show {Scared: [rejected, confused, helpless, submissive]}.
 
 If I did the following instead:
-```
+```javascript
 let successfulMatches = {}
 ```
 The second successful match would replace the first and final results would show {Scared: helpless, submissive}.
 
 ## Adding options for user to choose number of words to match
 I built in options for user to choose number of words to match by introducing the targetWordCount and otherWordCount = 12 - targetWordCount as shown in the setupRound() below:
-```
+```javascript
 function setupRound(resetTries = false) {
   document.getElementById(
     "instructions"
@@ -177,13 +177,13 @@ function setupRound(resetTries = false) {
   ).slice(0, otherWordCount); 
 
   words = shuffle([...words, ...otherWords]);
-  ...
+  //more lines follow
 }
   ```
 
 ## Deselecting only words that are incorrect
 When there is a wrong match, the user will have to try again and select the correct words. To improve user experience, the game will only deselect words that are incorrect and keep those that are correct, instead of deselecting all. 
-```
+```javascript
 setTimeout(() => {
       feedback.textContent = "";
       const selectedButtons = document.querySelectorAll(
@@ -200,7 +200,7 @@ setTimeout(() => {
     }, 1000);
 ```
 When the user selects new word, it will activate the selectWord() and the word will be added to the selectedWords array:
-```
+```javascript
 function selectWord(button, word) {
   console.log({ button, word });
   if (timeLeft <= 0) return;
